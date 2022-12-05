@@ -32,5 +32,10 @@ public class EmployeeController {
         return "This is my employee view page";
     }
 
+    @GetMapping("/delete")
+    public String Delete_employee(){
+        return "This is my employee delete page";
+    }
+
 
 }
