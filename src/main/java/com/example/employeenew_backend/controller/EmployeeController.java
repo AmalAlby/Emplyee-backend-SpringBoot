@@ -27,5 +27,10 @@ public class EmployeeController {
         return "This is my employee edit page";
     }
 
+    @GetMapping("/view")
+    public String View_employee(){
+        return "This is my employee view page";
+    }
+
 
 }
