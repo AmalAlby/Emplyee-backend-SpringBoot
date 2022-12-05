@@ -12,4 +12,10 @@ public class EmployeeController {
         return "This is my webpage";
     }
 
+    @GetMapping("/add")
+    public String Add_employee(){
+        return "This is my add employee page";
+    }
+
+
 }
