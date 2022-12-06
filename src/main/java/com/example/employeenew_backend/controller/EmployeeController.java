@@ -1,14 +1,22 @@
 package com.example.employeenew_backend.controller;
 
+import com.example.employeenew_backend.dao.EmployeeDao;
 import com.example.employeenew_backend.model.AddEmployee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 
 public class EmployeeController {
+
+    @Autowired
+    private EmployeeDao dao;
+
 
     @GetMapping("/")
     public String Webpage(){
@@ -25,6 +33,7 @@ public class EmployeeController {
         System.out.println(e.getMobilenumber().toString());
         System.out.println(e.getUsername().toString());
         System.out.println(e.getPassword().toString());
+        dao.save(e);
         return "This is my add employee page";
     }
 
@@ -39,8 +48,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/view")
-    public String View_employee(){
-        return "This is my employee view page";
+    public List<AddEmployee> View_employee(){
+
+        return (List<AddEmployee>) dao.findAll();
     }
 
     @PostMapping("/delete")
