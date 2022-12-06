@@ -1,20 +1,30 @@
 package com.example.employeenew_backend.controller;
 
+import com.example.employeenew_backend.model.AddEmployee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
 public class EmployeeController {
 
-    @PostMapping("/")
+    @GetMapping("/")
     public String Webpage(){
         return "This is my webpage";
     }
 
-    @PostMapping("/add")
-    public String Add_employee(){
+    @PostMapping(path="/add",consumes = "application/json",produces = "application/json")
+    public String Add_employee(@RequestBody AddEmployee e){
+        System.out.println(e.getEmpcode());
+        System.out.println(e.getEmpname().toString());
+        System.out.println(e.getCompanyname().toString());
+        System.out.println(e.getDesignation().toString());
+        System.out.println(e.getSalary());
+        System.out.println(e.getMobilenumber().toString());
+        System.out.println(e.getUsername().toString());
+        System.out.println(e.getPassword().toString());
         return "This is my add employee page";
     }
 
